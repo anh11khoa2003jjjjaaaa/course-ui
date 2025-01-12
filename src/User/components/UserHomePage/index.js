@@ -28,11 +28,11 @@ const UserHomePage = () => {
       const decodedToken = jwtDecode(token);
       setUserRole(decodedToken.RoleName); // Lưu RoleName từ token
     }
-    axios.get("https://localhost:8080/public/courses/approved")
+    axios.get("https://backendcourse.onrender.com/public/courses/approved")
       .then(response => {
         const updatedCourses = response.data.map(course => ({
           ...course,
-          thumbnailUrl: `https://localhost:8080/video/${course.thumbnailUrl.split('\\').pop()}`
+          thumbnailUrl: `https://backendcourse.onrender.com/video/${course.thumbnailUrl.split('\\').pop()}`
         }));
         setCourses(updatedCourses);
       })

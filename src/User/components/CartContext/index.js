@@ -24,7 +24,7 @@ export const CartProvider = ({ children }) => {
       const decodedToken = jwtDecode(token);
       const accountID = decodedToken.AccountID;
 
-      axios.get(`https://localhost:8080//public/users/account/${accountID}`)
+      axios.get(`https://backendcourse.onrender.com//public/users/account/${accountID}`)
         .then(response => {
           setFormData(prevFormData => ({
             ...prevFormData,
@@ -47,7 +47,7 @@ export const CartProvider = ({ children }) => {
   //   };
 
   //   try {
-  //     const response = await axios.post('https://localhost:8080//public/carts', updatedFormData);
+  //     const response = await axios.post('https://backendcourse.onrender.com//public/carts', updatedFormData);
   //     const cartDetail = response.data.cartDetails[0];
   //     const newCartItem = {
   //       cartDetailID: cartDetail.cartDetailID,
@@ -78,7 +78,7 @@ export const CartProvider = ({ children }) => {
   
     try {
       // Gửi yêu cầu thêm vào giỏ hàng
-      const response = await axios.post('https://localhost:8080/public/carts', updatedFormData);
+      const response = await axios.post('https://backendcourse.onrender.com/public/carts', updatedFormData);
   
       // Xử lý dữ liệu trả về nếu thành công
       const cartDetail = response.data.cart.cartDetails.find(
@@ -119,7 +119,7 @@ export const CartProvider = ({ children }) => {
   
   const removeFromCart = async (cartDetailID) => {
     try {
-      await axios.delete(`https://localhost:8080//public/carts/details/${cartDetailID}`);
+      await axios.delete(`https://backendcourse.onrender.com//public/carts/details/${cartDetailID}`);
       setCartItems(prevItems => prevItems.filter(item => item.cartDetailID !== cartDetailID));
       toast.success("Đã xóa khỏi giỏ hàng!");
     } catch (error) {
@@ -130,7 +130,7 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = async () => {
     try {
-      await axios.delete(`https://localhost:8080//public/carts/user/${formData.userID}`);
+      await axios.delete(`https://backendcourse.onrender.com//public/carts/user/${formData.userID}`);
       setCartItems([]);
     } catch (error) {
       console.error('Failed to clear cart in database:', error);
@@ -150,7 +150,7 @@ export const CartProvider = ({ children }) => {
         }))
       };
 
-      const response = await axios.post('https://localhost:8080//public/orders', orderPayload, {
+      const response = await axios.post('https://backendcourse.onrender.com//public/orders', orderPayload, {
         headers: {
           'Content-Type': 'application/json'
         }

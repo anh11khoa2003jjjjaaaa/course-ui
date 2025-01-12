@@ -33,7 +33,7 @@ const TeacherPage = () => {
         const decodedToken = jwtDecode(token);
         const accountID = decodedToken.AccountID;
 
-        axios.get(`https://localhost:8080/public/users/account/${accountID}`)
+        axios.get(`https://backendcourse.onrender.com/public/users/account/${accountID}`)
           .then(response => {
             setTeacherId(response.data.userID);
           })
@@ -62,7 +62,7 @@ const TeacherPage = () => {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('https://localhost:8080/public/courses');
+      const response = await axios.get('https://backendcourse.onrender.com/public/courses');
       setCourses(response.data);
     } catch (error) {
       console.error('Failed to fetch courses:', error);
@@ -71,7 +71,7 @@ const TeacherPage = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('https://localhost:8080/public/categories');
+      const response = await axios.get('https://backendcourse.onrender.com/public/categories');
       setCategories(response.data);
     } catch (error) {
       console.error('Failed to fetch categories:', error);
@@ -96,15 +96,15 @@ const TeacherPage = () => {
     setCurrentCourse(course);
     setThumbnail(null);
     setVideo(null);
-    setThumbnailPreview(`https://localhost:8080/video/${course.thumbnailUrl.split('\\').pop()}`);
-    setVideoPreview(`https://localhost:8080/video/${course.videoUrl.split('\\').pop()}`);
+    setThumbnailPreview(`https://backendcourse.onrender.com/video/${course.thumbnailUrl.split('\\').pop()}`);
+    setVideoPreview(`https://backendcourse.onrender.com/video/${course.videoUrl.split('\\').pop()}`);
     setErrors({});
     setOpen(true);
   };
 
   const handleDeleteCourse = async (courseId) => {
     try {
-      await axios.delete(`https://localhost:8080/public/courses/${courseId}`);
+      await axios.delete(`https://backendcourse.onrender.com/public/courses/${courseId}`);
       fetchCourses();
       toast.success('Xóa khóa học thành công!');
     } catch (error) {
@@ -153,14 +153,14 @@ const TeacherPage = () => {
 
     try {
       if (currentCourse.id) {
-        await axios.put(`https://localhost:8080/public/courses/${currentCourse.id}`, formData, {
+        await axios.put(`https://backendcourse.onrender.com/public/courses/${currentCourse.id}`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
         toast.success('Cập nhật khóa học thành công!');
       } else {
-        await axios.post('https://localhost:8080/public/courses', formData, {
+        await axios.post('https://backendcourse.onrender.com/public/courses', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

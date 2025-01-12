@@ -17,7 +17,7 @@ const AccountPage = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/public/accounts');
+      const response = await axios.get('https://backendcourse.onrender.com/public/accounts');
       setUsers(response.data);
     } catch (error) {
       console.error('Failed to fetch users:', error);
@@ -37,7 +37,7 @@ const AccountPage = () => {
 
   const handleSaveRole = async () => {
     try {
-      await axios.put(`http://localhost:8080/public/accounts/${editingUser.accountID}/role`, { roleId: newRole });
+      await axios.put(`https://backendcourse.onrender.com/public/accounts/${editingUser.accountID}/role`, { roleId: newRole });
       fetchUsers();
       setEditingUser(null);
       setOpen(false);

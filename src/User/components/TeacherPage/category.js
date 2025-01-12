@@ -17,7 +17,7 @@ const CategoryPage = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('https://localhost:8080/public/categories');
+      const response = await axios.get('https://backendcourse.onrender.com/public/categories');
       setCategories(response.data);
     } catch (error) {
       console.error('Failed to fetch categories:', error);
@@ -40,7 +40,7 @@ const CategoryPage = () => {
   
   const handleDeleteCategory = async (categoryId) => {
     try {
-      await axios.delete(`https://localhost:8080/public/categories/${categoryId}`);
+      await axios.delete(`https://backendcourse.onrender.com/public/categories/${categoryId}`);
       fetchCategories();
       toast.success('Xóa chủ đề thành công!');
     } catch (error) {
@@ -63,10 +63,10 @@ const CategoryPage = () => {
   
     try {
       if (currentCategory?.id) {
-        await axios.put(`https://localhost:8080/public/categories/${currentCategory.id}`, currentCategory);
+        await axios.put(`https://backendcourse.onrender.com/public/categories/${currentCategory.id}`, currentCategory);
         toast.success('Cập nhật chủ đề thành công!');
       } else {
-        await axios.post('https://localhost:8080/public/categories', currentCategory);
+        await axios.post('https://backendcourse.onrender.com/public/categories', currentCategory);
         toast.success('Thêm chủ đề thành công!');
       }
       setOpen(false);
@@ -81,10 +81,10 @@ const CategoryPage = () => {
   // const handleSaveCategory = async () => {
   //   try {
   //     if (currentCategory.id) {
-  //       await axios.put(`https://localhost:8080/public/categories/${currentCategory.id}`, currentCategory);
+  //       await axios.put(`https://backendcourse.onrender.com/public/categories/${currentCategory.id}`, currentCategory);
   //       toast.success('Cập nhật chủ đề thành công!');
   //     } else {
-  //       await axios.post('https://localhost:8080/public/categories', currentCategory);
+  //       await axios.post('https://backendcourse.onrender.com/public/categories', currentCategory);
   //       toast.success('Thêm chủ đề thành công!');
   //     }
   //     setOpen(false);

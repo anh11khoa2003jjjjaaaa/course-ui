@@ -25,10 +25,10 @@ const [userRole, setUserRole] = useState("");
         // Lấy dữ liệu khóa học từ backend khi component được mount
         const fetchCourses = async () => {
             try {
-                const response = await axios.get('https://localhost:8080/public/courses');
+                const response = await axios.get('https://backendcourse.onrender.com/public/courses');
                 const updatedCourses = response.data.map(course => ({
                     ...course,
-                    thumbnailUrl: `https://localhost:8080/video/${course.thumbnailUrl.split('\\').pop()}`
+                    thumbnailUrl: `https://backendcourse.onrender.com/video/${course.thumbnailUrl.split('\\').pop()}`
                 }));
                 setCourses(updatedCourses);
                 setSearchResults(updatedCourses); // Hiển thị tất cả khóa học ban đầu
@@ -58,7 +58,7 @@ const [userRole, setUserRole] = useState("");
     
                     // Fetch user data với token
                     const response = await axios.get(
-                        `https://localhost:8080/public/users/account/${decodedToken.AccountID}`,
+                        `https://backendcourse.onrender.com/public/users/account/${decodedToken.AccountID}`,
                         {
                             headers: {
                                 'Authorization': `Bearer ${token}`

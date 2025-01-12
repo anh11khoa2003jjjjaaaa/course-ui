@@ -17,7 +17,7 @@ const CategoryPage = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/public/categories');
+      const response = await axios.get('https://backendcourse.onrender.com/public/categories');
       setCategories(response.data);
     } catch (error) {
       console.error('Failed to fetch categories:', error);
@@ -40,7 +40,7 @@ const CategoryPage = () => {
 
   const handleDeleteCategory = async (categoryId) => {
     try {
-      await axios.delete(`http://localhost:8080/public/categories/${categoryId}`);
+      await axios.delete(`https://backendcourse.onrender.com/public/categories/${categoryId}`);
       fetchCategories();
       toast.success('Xóa danh mục thành công!');
     } catch (error) {
@@ -52,10 +52,10 @@ const CategoryPage = () => {
   const handleSaveCategory = async () => {
     try {
       if (currentCategory.id) {
-        await axios.put(`http://localhost:8080/public/categories/${currentCategory.id}`, currentCategory);
+        await axios.put(`https://backendcourse.onrender.com/public/categories/${currentCategory.id}`, currentCategory);
         toast.success('Cập nhật danh mục thành công!');
       } else {
-        await axios.post('http://localhost:8080/public/categories', currentCategory);
+        await axios.post('https://backendcourse.onrender.com/public/categories', currentCategory);
         toast.success('Thêm danh mục thành công!');
       }
       setOpen(false);

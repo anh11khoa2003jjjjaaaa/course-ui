@@ -23,11 +23,11 @@
 //   useEffect(() => {
 //     const fetchOrder = async () => {
 //       try {
-//         const response = await axios.get(`https://localhost:8080/public/orders/get/${orderId}`);
+//         const response = await axios.get(`https://backendcourse.onrender.com/public/orders/get/${orderId}`);
 //         setOrderDetails(response.data);
 
 //         // Fetch user details
-//         const userResponse = await axios.get(`https://localhost:8080/public/users/${response.data.order.userId}`);
+//         const userResponse = await axios.get(`https://backendcourse.onrender.com/public/users/${response.data.order.userId}`);
 //         setUserName(userResponse.data.displayName);
 //       } catch (error) {
 //         console.error('Failed to fetch order or user details:', error);
@@ -134,11 +134,11 @@ const navigave = useNavigate();
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const response = await axios.get(`https://localhost:8080/public/orders/get/${orderId}`);
+        const response = await axios.get(`https://backendcourse.onrender.com/public/orders/get/${orderId}`);
         setOrderDetails(response.data);
 
         // Fetch user details
-        const userResponse = await axios.get(`https://localhost:8080/public/users/${response.data.order.userId}`);
+        const userResponse = await axios.get(`https://backendcourse.onrender.com/public/users/${response.data.order.userId}`);
         setUserName(userResponse.data.displayName);
       } catch (error) {
         console.error('Failed to fetch order or user details:', error);
@@ -151,7 +151,7 @@ const navigave = useNavigate();
   
   const handlePayment = async () => {
     try {
-      const response = await axios.post('https://localhost:8080/submitOrder', {
+      const response = await axios.post('https://backendcourse.onrender.com/submitOrder', {
         amount: orderDetails.totalAmount,
         orderInfo: `Order ID: ${orderDetails.order.id}`
       });

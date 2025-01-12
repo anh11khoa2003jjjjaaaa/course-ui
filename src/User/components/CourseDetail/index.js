@@ -49,19 +49,19 @@ const CourseDetail = () => {
     }
     const fetchCourseDetails = async () => {
       try {
-        const response = await axios.get(`https://localhost:8080/public/courses/${courseId}`);
+        const response = await axios.get(`https://backendcourse.onrender.com/public/courses/${courseId}`);
         const courseData = {
           ...response.data,
-          videoUrl: `https://localhost:8080/video/${response.data.videoUrl.split('\\').pop()}`,
-          thumbnailUrl: `https://localhost:8080/video/${response.data.thumbnailUrl.split('\\').pop()}`,
+          videoUrl: `https://backendcourse.onrender.com/video/${response.data.videoUrl.split('\\').pop()}`,
+          thumbnailUrl: `https://backendcourse.onrender.com/video/${response.data.thumbnailUrl.split('\\').pop()}`,
         };
         setCourse(courseData);
 
         // Fetch teacher details
-        const teacherResponse = await axios.get(`https://localhost:8080/public/users/${courseData.teacherId}`);
+        const teacherResponse = await axios.get(`https://backendcourse.onrender.com/public/users/${courseData.teacherId}`);
         setTeacher(teacherResponse.data);
   // Fetch reviews for the course
-  const reviewsResponse = await axios.get(`https://localhost:8080/api/reviews/course/${courseId}`);
+  const reviewsResponse = await axios.get(`https://backendcourse.onrender.com/api/reviews/course/${courseId}`);
   const reviews = reviewsResponse.data;
   setReview(reviews);
   const avg=()=>{

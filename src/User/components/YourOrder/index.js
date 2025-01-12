@@ -10,7 +10,7 @@
 //   useEffect(() => {
 //     const fetchOrders = async () => {
 //       try {
-//         const response = await axios.get(`https://localhost:8080//public/orders/user/${userId}`);
+//         const response = await axios.get(`https://backendcourse.onrender.com//public/orders/user/${userId}`);
 //         setOrders(response.data);
 //       } catch (error) {
 //         console.error('Failed to fetch orders:', error);
@@ -44,7 +44,7 @@
 //                   <CardMedia
 //                     component="img"
 //                     sx={{ width: 100, height: 100, mr: 2 }}
-//                     image={`https://localhost:8080//video/${item.course.thumbnailUrl.split('\\').pop()}`}
+//                     image={`https://backendcourse.onrender.com//video/${item.course.thumbnailUrl.split('\\').pop()}`}
 //                     alt={item.course.title}
 //                   />
 //                   <ListItemText
@@ -60,7 +60,7 @@
 //                         </Typography>
 //                         <br />
 //                         <video width="320" height="240" controls>
-//                           <source src={`https://localhost:8080//video/${item.course.videoUrl.split('\\').pop()}`} type="video/mp4" />
+//                           <source src={`https://backendcourse.onrender.com//video/${item.course.videoUrl.split('\\').pop()}`} type="video/mp4" />
 //                           Trình duyệt của bạn không hỗ trợ thẻ video.
 //                         </video>
 //                       </>
@@ -92,7 +92,7 @@ const YourOrder = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get(`https://localhost:8080/public/orders/status/3/${userId}`);
+        const response = await axios.get(`https://backendcourse.onrender.com/public/orders/status/3/${userId}`);
         setOrders(response.data);
       } catch (error) {
         console.error('Failed to fetch orders:', error);

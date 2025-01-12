@@ -36,7 +36,7 @@ const ReviewerPage = () => {
         if (token) {
             const decodedToken = jwtDecode(token);
             setUserRole(decodedToken.RoleName);
-            const userResponse = await axios.get(`https://localhost:8080/public/users/account/${decodedToken.AccountID}`);
+            const userResponse = await axios.get(`https://backendcourse.onrender.com/public/users/account/${decodedToken.AccountID}`);
             console.log(userResponse.data);
             console.log(userResponse.data.userID);
             setUserId(userResponse.data.userID); // Lấy userId từ token
@@ -50,7 +50,7 @@ const ReviewerPage = () => {
     const fetchReviewsAndUsers = async () => {
       try {
         // Fetch reviews của khóa học
-        const response = await axios.get(`https://localhost:8080/api/reviews/course/${courseId}`);
+        const response = await axios.get(`https://backendcourse.onrender.com/api/reviews/course/${courseId}`);
         const fetchedReviews = response.data;
 
         // Lấy danh sách userId từ reviews
@@ -59,7 +59,7 @@ const ReviewerPage = () => {
         // Fetch thông tin user theo userId
         const userResponses = await Promise.all(
           userIds.map((id) =>
-            axios.get(`https://localhost:8080/public/users/${id}`).catch((err) => null)
+            axios.get(`https://backendcourse.onrender.com/public/users/${id}`).catch((err) => null)
           )
         );
 
@@ -91,7 +91,7 @@ const ReviewerPage = () => {
     try {
       if (editingReview) {
         // Chỉnh sửa đánh giá
-        await axios.put(`https://localhost:8080/api/reviews/${editingReview.id}`, {
+        await axios.put(`https://backendcourse.onrender.com/api/reviews/${editingReview.id}`, {
           rating: newReview.rating,
           comment: newReview.comment,
         });
@@ -105,7 +105,7 @@ const ReviewerPage = () => {
         );
       } else {
         // Thêm đánh giá mới
-        const response = await axios.post(`https://localhost:8080/api/reviews`, {
+        const response = await axios.post(`https://backendcourse.onrender.com/api/reviews`, {
           courseId,
           rating: newReview.rating,
           comment: newReview.comment,
@@ -125,7 +125,7 @@ const ReviewerPage = () => {
   // Xóa đánh giá
   const handleDeleteReview = async (reviewId) => {
     try {
-      await axios.delete(`https://localhost:8080/api/reviews/${reviewId}`, {
+      await axios.delete(`https://backendcourse.onrender.com/api/reviews/${reviewId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

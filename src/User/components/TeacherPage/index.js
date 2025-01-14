@@ -96,8 +96,8 @@ const TeacherPage = () => {
     setCurrentCourse(course);
     setThumbnail(null);
     setVideo(null);
-    setThumbnailPreview(`https://backendcourse.onrender.com/video/${course.thumbnailUrl.split('\\').pop()}`);
-    setVideoPreview(`https://backendcourse.onrender.com/video/${course.videoUrl.split('\\').pop()}`);
+    setThumbnailPreview(course.thumbnailUrl);
+    setVideoPreview(course.videoUrl);
     setErrors({});
     setOpen(true);
   };

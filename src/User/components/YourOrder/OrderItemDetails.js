@@ -12,9 +12,10 @@ const OrderItemDetails = ({ item }) => {
   const handleCloseVideoModal = () => {
     setIsVideoModalOpen(false);
   };
+  
 
-  const thumbnailUrl = `https://backendcourse.onrender.com/video/${item.course.thumbnailUrl.split('\\').pop()}`;
-  const videoUrl = `https://backendcourse.onrender.com/video/${item.course.videoUrl.split('\\').pop()}`;
+  const thumbnailUrl = item.course.thumbnailUrl;
+  const videoUrl = item.course.videoUrl;
 
   return (
     <>

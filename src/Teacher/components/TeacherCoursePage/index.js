@@ -321,13 +321,20 @@ const TeacherCoursePage = () => {
   //   setIsVideoModalOpen(true);
   // };
   const handleOpenVideoModal = (videoUrl) => {
-    // Đảm bảo URL video đầy đủ và hợp lệ
-    const fullVideoUrl = videoUrl.startsWith('http') 
-      ? videoUrl 
-      : `https://backendcourse.onrender.com/video/${videoUrl.split('\\').pop()}`;
+    if (!videoUrl) {
+      console.error("Video URL is missing or invalid.");
+      return;
+    }
+  
+    // Kiểm tra xem URL trả về đã là dạng đầy đủ hay chưa
+    const fullVideoUrl = videoUrl.includes('https://') || videoUrl.includes('http://') 
+      ? videoUrl // Nếu URL đã đầy đủ, sử dụng trực tiếp
+      : `https://backendcourse.onrender.com/video/${videoUrl.split('\\').pop()}`; // Nếu không, thêm tiền tố và xử lý
+  
     setVideoUrl(fullVideoUrl);
     setIsVideoModalOpen(true);
   };
+  
   
 
   const handleCloseVideoModal = () => {

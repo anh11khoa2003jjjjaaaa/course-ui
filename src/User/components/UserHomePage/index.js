@@ -32,7 +32,7 @@ const UserHomePage = () => {
       .then(response => {
         const updatedCourses = response.data.map(course => ({
           ...course,
-          thumbnailUrl: `https://backendcourse.onrender.com/video/${course.thumbnailUrl.split('\\').pop()}`
+          thumbnailUrl: course.thumbnailUrl,
         }));
         setCourses(updatedCourses);
       })

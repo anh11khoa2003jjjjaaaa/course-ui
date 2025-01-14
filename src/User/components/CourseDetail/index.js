@@ -52,8 +52,8 @@ const CourseDetail = () => {
         const response = await axios.get(`https://backendcourse.onrender.com/public/courses/${courseId}`);
         const courseData = {
           ...response.data,
-          videoUrl: `https://backendcourse.onrender.com/video/${response.data.videoUrl.split('\\').pop()}`,
-          thumbnailUrl: `https://backendcourse.onrender.com/video/${response.data.thumbnailUrl.split('\\').pop()}`,
+          videoUrl: response.data.videoUrl,
+          thumbnailUrl: response.data.thumbnailUrl,
         };
         setCourse(courseData);
 
